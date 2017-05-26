@@ -2,15 +2,15 @@
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
-*/.apt_generated
-*/.classpath
-*/.factorypath
-*/.project
-*/.settings
-*/.springBeans
+*.apt_generated
+*.classpath
+*.factorypath
+*.project
+*.settings
+*.springBeans
 
 ### IntelliJ IDEA ###
-*/.idea
+*.idea
 *.iws
 *.iml
 *.ipr
