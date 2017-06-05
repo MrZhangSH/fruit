@@ -1,9 +1,12 @@
 package com.fruit.controller.fruit;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fruit.model.fruit.Fruit;
@@ -27,4 +30,14 @@ public class FruitController {
 
 	}
 
+	@RequestMapping(value = "/getAllFruit", method = RequestMethod.GET)
+	public List<Fruit> getAllFruit() {
+		return fruitService.findAllFruit();
+	}
+
+	@RequestMapping(value = "/getFruitByName", method = RequestMethod.GET)
+	public Fruit getFruitByName(@RequestParam("fruitName") String fruitName) {
+		Fruit fruit = fruitService.findFruitByName(fruitName);
+		return fruit;
+	}
 }

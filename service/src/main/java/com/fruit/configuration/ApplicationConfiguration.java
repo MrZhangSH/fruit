@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
+import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 import com.mongodb.Mongo;
 
@@ -24,11 +27,30 @@ public class ApplicationConfiguration {
 	}
 
 	@SuppressWarnings("deprecation")
-	public @Bean MongoDbFactory mongoDbFactory() throws Exception {
+	@Bean
+	public MongoDbFactory mongoDbFactory() throws Exception {
 		return new SimpleMongoDbFactory(mongo(), "fruit");
 	}
 
-	public @Bean MongoTemplate mongoTemplate() throws Exception {
-		return new MongoTemplate(mongoDbFactory());
+	@Bean
+	public MongoTemplate mongoTemplate() throws Exception {
+		return new MongoTemplate(mongoDbFactory(), mappingMongoConverter());
+	}
+
+	@Bean
+	public DefaultMongoTypeMapper defaultMongoTypeMapper() {
+		return new DefaultMongoTypeMapper(null);
+	}
+
+	@Bean
+	public MongoMappingContext mongoMappingContext() {
+		return new MongoMappingContext();
+	}
+
+	@SuppressWarnings("deprecation")
+	@Bean
+	public MappingMongoConverter mappingMongoConverter() throws Exception {
+		return new MappingMongoConverter(mongoDbFactory(),
+				mongoMappingContext());
 	}
 }

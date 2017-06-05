@@ -1,5 +1,7 @@
 package com.fruit.service.fruit;
 
+import java.util.List;
+
 import com.fruit.model.fruit.Fruit;
 
 /**
@@ -8,4 +10,8 @@ import com.fruit.model.fruit.Fruit;
 public interface FruitService {
 
 	boolean addFruit(Fruit fruit);
+
+	List<Fruit> findAllFruit();
+
+	Fruit findFruitByName(String fruitName);
 }
