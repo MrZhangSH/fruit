@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fruit.model.fruit.Fruit;
 import com.fruit.service.fruit.FruitService;
-import com.fruit.util.common.CommonUtil;
+import com.fruit.util.common.RespUtil;
 import com.fruit.vo.common.Response;
 
 @RestController
@@ -24,15 +24,34 @@ public class FruitController {
 	@RequestMapping(value = "/addFruit", method = RequestMethod.POST)
 	public Response addFruit(@RequestBody Fruit fruit) {
 		if (fruitService.addFruit(fruit)) {
-			return CommonUtil.getResponse("0");
+			return RespUtil.getSuccessResponse(Response.class);
 		}
-		return CommonUtil.getResponse("1");
+		return RespUtil.getErrorResponse(Response.class);
+
+	}
+
+	@RequestMapping(value = "/insertFruit", method = RequestMethod.POST)
+	public Response insertFruit(@RequestBody Fruit fruit) {
+		fruitService.insertFruit(fruit);
+		return RespUtil.getResponse("0");
 
 	}
 
 	@RequestMapping(value = "/getAllFruit", method = RequestMethod.GET)
 	public List<Fruit> getAllFruit() {
 		return fruitService.findAllFruit();
+	}
+
+	@RequestMapping(value = "/getFruitByCategoryCode", method = RequestMethod.GET)
+	public List<Fruit> getFruitByCategoryCode(
+			@RequestParam("categoryCode") String categoryCode) {
+		return fruitService.findByCategoryCode(categoryCode);
+	}
+
+	@RequestMapping(value = "/getFruitByNameLike", method = RequestMethod.GET)
+	public List<Fruit> getFruitByNameLike(
+			@RequestParam("fruitName") String fruitName) {
+		return fruitService.findByNameLike(fruitName);
 	}
 
 	@RequestMapping(value = "/getFruitByName", method = RequestMethod.GET)

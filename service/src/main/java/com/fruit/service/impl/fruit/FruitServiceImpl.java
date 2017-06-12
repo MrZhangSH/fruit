@@ -3,14 +3,11 @@ package com.fruit.service.impl.fruit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.fruit.model.fruit.Fruit;
+import com.fruit.repositories.fruit.FruitRepository;
 import com.fruit.service.fruit.FruitService;
 
 /**
@@ -21,6 +18,9 @@ public class FruitServiceImpl implements FruitService {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
+
+	@Autowired
+	private FruitRepository fruitRepository;
 
 	public boolean addFruit(Fruit fruit) {
 
@@ -33,15 +33,24 @@ public class FruitServiceImpl implements FruitService {
 		return true;
 	}
 
+	public void insertFruit(Fruit fruit) {
+		fruitRepository.insert(fruit);
+	}
+
 	public List<Fruit> findAllFruit() {
-		Query query = new Query();
-		query.with(new Sort(Direction.DESC, "name"));
-		List<Fruit> fruits = mongoTemplate.find(query, Fruit.class);
-		return fruits;
+		return fruitRepository.findAll();
+	}
+
+	public List<Fruit> findByCategoryCode(String categoryCode) {
+		return fruitRepository.findByCategoryCode(categoryCode);
 	}
 
 	public Fruit findFruitByName(String fruitName) {
-		Query query = new Query(Criteria.where("name").is(fruitName));
-		return mongoTemplate.findOne(query, Fruit.class);
+		return fruitRepository.findByFruitName(fruitName);
 	}
+
+	public List<Fruit> findByNameLike(String fruitName) {
+		return fruitRepository.findByFruitNameLike(fruitName);
+	}
+
 }

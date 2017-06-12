@@ -12,7 +12,7 @@ public class Fruit implements Serializable {
 
 	private BigInteger _id;
 
-	private String name;
+	private String fruitName;
 
 	private String categoryCode;
 
@@ -28,12 +28,12 @@ public class Fruit implements Serializable {
 		this._id = _id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFruitName() {
+		return fruitName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFruitName(String fruitName) {
+		this.fruitName = fruitName;
 	}
 
 	public String getCategoryCode() {

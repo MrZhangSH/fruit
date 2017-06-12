@@ -14,4 +14,10 @@ public interface FruitService {
 	List<Fruit> findAllFruit();
 
 	Fruit findFruitByName(String fruitName);
+
+	void insertFruit(Fruit fruit);
+
+	List<Fruit> findByCategoryCode(String categoryCode);
+
+	List<Fruit> findByNameLike(String fruitName);
 }

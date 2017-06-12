@@ -8,7 +8,6 @@
 		<artifactId>fruit</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.fruit.admin</groupId>
 	<artifactId>com.fruit.admin</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
