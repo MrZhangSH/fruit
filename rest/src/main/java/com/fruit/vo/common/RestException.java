@@ -1,8 +1,8 @@
 package com.fruit.vo.common;
 
-public class MyException extends RuntimeException {
+public class RestException extends RuntimeException {
 
-	public MyException(String message) {
+	public RestException(String message) {
 		super(message);
 	}
 

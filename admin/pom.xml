@@ -19,6 +19,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>com.fruit.admin</finalName>
+		<finalName>admin</finalName>
 	</build>
 </project>

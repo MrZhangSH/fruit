@@ -44,7 +44,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-			<scope>provied</scope>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- dubbo start -->
@@ -73,6 +73,6 @@
 
 	</dependencies>
 	<build>
-		<finalName>com.fruit.service</finalName>
+		<finalName>service</finalName>
 	</build>
 </project>

@@ -2,7 +2,7 @@ package com.fruit.util.common;
 
 import java.lang.reflect.Method;
 
-import com.fruit.vo.common.MyException;
+import com.fruit.vo.common.RestException;
 import com.fruit.vo.common.Response;
 import com.fruit.vo.common.ResponseHeader;
 
@@ -30,7 +30,7 @@ public class RespUtil {
 			method.invoke(resp, getResponseHeader("0"));
 			return resp;
 		} catch (Exception e) {
-			throw new MyException(e.getMessage());
+			throw new RestException(e.getMessage());
 		}
 
 	}
@@ -43,7 +43,7 @@ public class RespUtil {
 			method.invoke(resp, getResponseHeader("1"));
 			return resp;
 		} catch (Exception e) {
-			throw new MyException(e.getMessage());
+			throw new RestException(e.getMessage());
 		}
 
 	}
